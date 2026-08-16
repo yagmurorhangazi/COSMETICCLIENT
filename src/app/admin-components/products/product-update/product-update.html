@@ -1,10 +1,9 @@
-<h3>Yeni Ürün Ekle</h3>
+<h3>Ürünü Güncelle</h3>
 
-<form #updateForm="ngForm" (ngSubmit)="create()">
-
+<form #updateForm="ngForm" (ngSubmit)="update()">
+<input type="hidden" name="id"[(ngModel)]="product.id">
   <label>Ürün Adı</label>
-  <input type="text" name="name" class="form-control" [(ngModel)]="product.name" required="" minlength="3" maxlength="50">
-
+  <input type="text" name="name" class="form-control" [(ngModel)]="product.name" required="">
 <br>
   <label>Ürün Görseli</label>
   <input type="text" name="imageUrl" class="form-control" [(ngModel)]="product.imageUrl" required="">
@@ -20,6 +19,6 @@
     }
   </select>
 <br>
-<button class="btn btn-dark" type="submit">Ürünü Ekle</button>
+<button class="btn btn-dark" type="submit" [disabled]="updateForm.invalid || !updateForm.dirty">Ürünü Güncelle</button>
 
 </form>

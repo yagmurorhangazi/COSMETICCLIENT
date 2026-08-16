@@ -5,6 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>LUMIÈRE COSMÉTIQUES</title>
 
+
 </head>
 <body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- TopNavBar Shared Component -->
@@ -16,10 +17,10 @@
 </button>
 <!-- Navigation Links (Desktop) -->
 <div class="hidden md:flex items-center gap-stack-lg">
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Collections</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Services</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Ingredients</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Our Story</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#products">Ürünler</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#about">Hakkımızda</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#testimonial">Referanslar</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#contact">İletişim</a>
 </div>
 <!-- Brand Logo -->
 <div class="absolute left-1/2 -translate-x-1/2">
@@ -37,9 +38,11 @@
 </nav>
 </header>
 <main>
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 </main>
+
 <!-- Footer Shared Component -->
+<!-- Testimonial Section -->
 
 <footer class="w-full rounded-none bg-surface-container-low dark:bg-surface-container-highest">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max mx-auto">
@@ -47,27 +50,28 @@
 <div class="flex flex-col gap-stack-md">
 <a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim uppercase tracking-widest" href="#">LUMIÈRE</a>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-xs mt-4">
-                    Defining modern luxury through pure, botanical formulations and mindful aesthetics.
+                    Modern lüksü; saf, bitkisel formüller ve bilinçli bir estetik anlayışıyla tanımlamak.
                 </p>
 </div>
 <!-- Links Column -->
 <div class="flex flex-col gap-stack-sm md:col-start-3">
-<span class="font-label-sm text-label-sm text-on-surface mb-2 tracking-widest">SUPPORT</span>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Shipping &amp; Returns</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<span class="font-label-sm text-label-sm text-on-surface mb-2 tracking-widest">Destek</span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Teslimat ve İade</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Gizlilik Politikası</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Hizmet Şartları</a>
 </div>
 <!-- Links Column 2 -->
 <div class="flex flex-col gap-stack-sm">
-<span class="font-label-sm text-label-sm text-on-surface mb-2 tracking-widest">COMPANY</span>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Sustainability</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Careers</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Contact Us</a>
+<span class="font-label-sm text-label-sm text-on-surface mb-2 tracking-widest">ŞİRKET</span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Sürdürülebilirlik</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Kariyer</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">
+Bize Ulaşın</a>
 </div>
 </div>
 <!-- Copyright -->
 <div class="border-t border-outline-variant/30 py-stack-md px-margin-mobile md:px-margin-desktop flex justify-center items-center max-w-container-max mx-auto">
-<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-widest">© 2024 LUMIÈRE COSMÉTIQUES. ALL RIGHTS RESERVED.</p>
+<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-widest">© 2026 CosmeticClient. Tüm Hakları Saklıdır.</p>
 </div>
 </footer>
 </body></html>

@@ -3,9 +3,9 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import * as alertifyjs from 'alertifyjs';
-import { ProductService } from '../../services/product-service';
-import { CategoryService } from '../../services/category-service';
-import { Product } from '../../models/products';
+import { ProductService } from '../../../services/product-service';
+import { CategoryService } from '../../../services/category-service';
+import { Product } from '../../../models/products';
 
 @Component({
   selector: 'app-product-create',

@@ -14,6 +14,9 @@ baseUrl="https://localhost:7000/api/products/";
 getAll(){
   return this.http.get<Product[]>(this.baseUrl);
 }
+getLast4Products(){
+  return this.http.get<Product[]>(this.baseUrl+'Last4Products');
+}
 
 create(model:Product){
 return this.http.post(this.baseUrl,model);

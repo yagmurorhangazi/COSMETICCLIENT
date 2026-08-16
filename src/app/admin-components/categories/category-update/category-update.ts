@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, inject, Input, input, OnInit } from '@angular/core';
-import { CategoryService } from '../../services/category-service';
-import { Category } from '../../models/category';
+import { CategoryService } from '../../../services/category-service';
+import { Category } from '../../../models/category';
 import { Router } from '@angular/router';
 
 @Component({

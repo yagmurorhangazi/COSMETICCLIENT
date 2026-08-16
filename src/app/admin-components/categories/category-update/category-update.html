@@ -1,0 +1,407 @@
+<div class="container py-5">
+
+  <!-- =====================================================
+       ÜST BAŞLIK
+  ====================================================== -->
+
+  <div class="mb-4">
+
+    <span
+      class="text-uppercase fw-semibold"
+      style="
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: #8A653B;
+      "
+    >
+      KATEGORİ YÖNETİMİ
+    </span>
+
+    <h1
+      class="mt-2 mb-1 fw-bold"
+      style="
+        color: #3b302a;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 30px;
+      "
+    >
+      Kategori Güncelle
+    </h1>
+
+    <p
+      class="mb-0"
+      style="
+        color: #8c786d;
+        font-size: 13px;
+      "
+    >
+      Mevcut kategori bilgilerini düzenleyebilirsiniz.
+    </p>
+
+  </div>
+
+
+  <!-- =====================================================
+       FORM CARD
+  ====================================================== -->
+
+  <div
+    class="card border-0 shadow-sm rounded-4 overflow-hidden"
+    style="
+      max-width: 650px;
+      background-color: #ffffff;
+    "
+  >
+
+    <!-- ÜST RENKLİ ÇİZGİ -->
+
+    <div
+      style="
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          #8A653B,
+          #B8956A,
+          #8A653B
+        );
+      "
+    ></div>
+
+
+    <div class="p-4 p-md-5">
+
+      <!-- FORM BAŞLIĞI -->
+
+      <div
+        class="d-flex align-items-center gap-3 mb-4 pb-4"
+        style="
+          border-bottom: 1px solid #EEDCD0;
+        "
+      >
+
+        <div
+          class="d-flex align-items-center justify-content-center"
+          style="
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background-color: #F4EFEB;
+            color: #8A653B;
+          "
+        >
+
+          <svg
+            width="21"
+            height="21"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          >
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 20h9"
+            />
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"
+            />
+
+          </svg>
+
+        </div>
+
+
+        <div>
+
+          <h5
+            class="mb-1 fw-bold"
+            style="color: #3b302a;"
+          >
+            Kategori Bilgileri
+          </h5>
+
+          <p
+            class="mb-0"
+            style="
+              color: #9a887d;
+              font-size: 12px;
+            "
+          >
+            Kategori adını aşağıdaki alandan düzenleyebilirsiniz.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           FORM
+      ================================================== -->
+
+      <form
+        #updateForm="ngForm"
+        (ngSubmit)="update()"
+        novalidate
+      >
+
+        <!-- GİZLİ ID -->
+
+        <input
+          type="hidden"
+          name="id"
+          [(ngModel)]="category.id"
+        >
+
+
+        <!-- KATEGORİ ADI -->
+
+        <div class="mb-4">
+
+          <label
+            for="categoryName"
+            class="form-label fw-semibold"
+            style="
+              color: #4a3b32;
+              font-size: 13px;
+            "
+          >
+            Kategori Adı
+
+            <span style="color: #A65D4F;">
+              *
+            </span>
+
+          </label>
+
+
+          <input
+            id="categoryName"
+            type="text"
+            name="categoryName"
+            class="form-control category-input"
+            [(ngModel)]="category.categoryName"
+            #categoryName="ngModel"
+            required
+            minlength="2"
+            placeholder="Örn. Cilt Bakımı"
+          >
+
+
+          <!-- VALIDATION -->
+
+          <div
+            *ngIf="categoryName.invalid && (categoryName.dirty || categoryName.touched)"
+            class="mt-2"
+            style="
+              color: #A65D4F;
+              font-size: 11px;
+            "
+          >
+
+            <span *ngIf="categoryName.errors?.['required']">
+              Kategori adı boş bırakılamaz.
+            </span>
+
+            <span *ngIf="categoryName.errors?.['minlength']">
+              Kategori adı en az 2 karakter olmalıdır.
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BUTONLAR
+        ================================================== -->
+
+        <div
+          class="d-flex
+                 flex-column
+                 flex-sm-row
+                 justify-content-end
+                 gap-2
+                 pt-3"
+          style="
+            border-top: 1px solid #F0EAE4;
+          "
+        >
+
+          <!-- İPTAL -->
+
+          <a
+            [routerLink]="['/admin/categories']"
+            class="btn cancel-btn"
+          >
+            İptal
+          </a>
+
+
+          <!-- GÜNCELLE -->
+
+          <button
+            type="submit"
+            class="btn update-btn"
+            [disabled]="updateForm.invalid"
+          >
+
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 12.5 9 16l10-10"
+              />
+
+            </svg>
+
+            Değişiklikleri Kaydet
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     STYLES
+====================================================== -->
+
+<style>
+
+  .category-input {
+    height: 46px;
+
+    border: 1px solid #EEDCD0;
+    border-radius: 11px;
+
+    background-color: #FCFAF8;
+
+    color: #3b302a;
+
+    font-size: 13px;
+
+    padding: 0 14px;
+
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+
+  .category-input::placeholder {
+    color: #b6a69c;
+  }
+
+
+  .category-input:focus {
+    background-color: #ffffff;
+
+    border-color: #8A653B;
+
+    box-shadow:
+      0 0 0 3px rgba(138, 101, 59, 0.10);
+
+    outline: none;
+  }
+
+
+  .cancel-btn {
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 20px;
+
+    border-radius: 10px;
+
+    background-color: #FAF7F2;
+
+    border: 1px solid #EEDCD0;
+
+    color: #6b5b52;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+  }
+
+
+  .cancel-btn:hover {
+    background-color: #F1E9E2;
+
+    color: #3b302a;
+
+    transform: translateY(-1px);
+  }
+
+
+  .update-btn {
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 20px;
+
+    border-radius: 10px;
+
+    background-color: #8A653B;
+
+    border: 1px solid #8A653B;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+  }
+
+
+  .update-btn:hover:not(:disabled) {
+    background-color: #73532F;
+
+    border-color: #73532F;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+      0 6px 16px rgba(138, 101, 59, 0.18);
+  }
+
+
+  .update-btn:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+  }
+
+</style>

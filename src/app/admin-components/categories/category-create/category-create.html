@@ -1,0 +1,297 @@
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-12 col-md-7 col-lg-5">
+
+      <!-- FORM CARD -->
+      <div
+        class="card border-0 rounded-4 shadow-sm overflow-hidden"
+        style="background-color: #ffffff;"
+      >
+
+        <!-- ÜST RENK ŞERİDİ -->
+        <div
+          style="
+            height: 4px;
+            background: linear-gradient(
+              90deg,
+              #8A653B,
+              #B8956A,
+              #8A653B
+            );
+          "
+        ></div>
+
+
+        <!-- CARD HEADER -->
+        <div class="p-4 pb-3">
+
+          <div
+            class="d-flex align-items-center justify-content-center mb-3"
+          >
+
+            <!-- ICON -->
+            <div
+              class="d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 52px;
+                height: 52px;
+                background-color: #FAF7F2;
+                color: #8A653B;
+              "
+            >
+
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 5v14M5 12h14"
+                />
+              </svg>
+
+            </div>
+
+          </div>
+
+
+          <div class="text-center">
+
+            <span
+              class="text-uppercase fw-semibold"
+              style="
+                font-size: 10px;
+                letter-spacing: 2px;
+                color: #8A653B;
+              "
+            >
+              KATEGORİ YÖNETİMİ
+            </span>
+
+            <h3
+              class="mt-2 mb-2 fw-bold"
+              style="
+                color: #3b302a;
+                font-family: Georgia, 'Times New Roman', serif;
+              "
+            >
+              Yeni Kategori Ekle
+            </h3>
+
+            <p
+              class="mb-0"
+              style="
+                color: #8c786d;
+                font-size: 13px;
+              "
+            >
+              Ürünlerinizi daha düzenli yönetmek için
+              yeni bir kategori oluşturun.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- DIVIDER -->
+        <div
+          class="mx-4"
+          style="
+            height: 1px;
+            background-color: #EEDCD0;
+          "
+        ></div>
+
+
+        <!-- FORM -->
+        <form
+          #updateForm="ngForm"
+          (ngSubmit)="create()"
+          class="p-4"
+        >
+
+          <!-- KATEGORİ ADI -->
+          <div class="mb-4">
+
+            <label
+              for="categoryName"
+              class="form-label fw-semibold mb-2"
+              style="
+                color: #5c4a3f;
+                font-size: 13px;
+              "
+            >
+              Kategori Adı
+            </label>
+
+
+            <div class="position-relative">
+
+              <!-- INPUT ICON -->
+              <svg
+                class="position-absolute"
+                style="
+                  left: 14px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  color: #9A7B52;
+                  pointer-events: none;
+                "
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 6h16M4 12h16M4 18h10"
+                />
+              </svg>
+
+
+              <input
+                id="categoryName"
+                type="text"
+                name="categoryName"
+                class="form-control"
+                [(ngModel)]="category.categoryName"
+                #categoryName="ngModel"
+                required
+                placeholder="Örn. Cilt Bakımı"
+                autocomplete="off"
+                style="
+                  height: 48px;
+                  padding-left: 42px;
+                  padding-right: 14px;
+                  border: 1px solid #EEDCD0;
+                  border-radius: 12px;
+                  color: #3b302a;
+                  background-color: #FAF7F2;
+                  font-size: 14px;
+                  box-shadow: none;
+                "
+              />
+
+            </div>
+
+
+            <!-- VALIDATION -->
+            <div
+              *ngIf="
+                categoryName.invalid &&
+                (categoryName.dirty || categoryName.touched)
+              "
+              class="mt-2"
+              style="
+                color: #a65d4f;
+                font-size: 12px;
+              "
+            >
+              Kategori adı boş bırakılamaz.
+            </div>
+
+          </div>
+
+
+          <!-- BUTTON -->
+          <button
+            type="submit"
+            [disabled]="updateForm.invalid"
+            class="btn w-100 d-flex align-items-center justify-content-center gap-2"
+            style="
+              height: 48px;
+              border: none;
+              border-radius: 12px;
+              background-color: #8A653B;
+              color: #ffffff;
+              font-size: 13px;
+              font-weight: 600;
+              letter-spacing: 0.2px;
+              transition: all 0.25s ease;
+            "
+          >
+
+            <!-- PLUS ICON -->
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 5v14M5 12h14"
+              />
+            </svg>
+
+            Kategoriyi Ekle
+
+          </button>
+
+
+          <!-- ALT BİLGİ -->
+          <div
+            class="text-center mt-3"
+            style="
+              color: #a08e82;
+              font-size: 11px;
+            "
+          >
+            Kategori oluşturduktan sonra ürünlerinizi
+            bu kategori altında listeleyebilirsiniz.
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- HOVER / FOCUS STYLES -->
+<style>
+
+  input.form-control:focus {
+    border-color: #9A7B52 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(138, 101, 59, 0.08) !important;
+  }
+
+  input.form-control::placeholder {
+    color: #b5a69c;
+  }
+
+  button:not(:disabled):hover {
+    background-color: #73532f !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(138, 101, 59, 0.18);
+  }
+
+  button:not(:disabled):active {
+    transform: translateY(0);
+  }
+
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+</style>

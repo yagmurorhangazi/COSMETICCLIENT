@@ -1,9 +1,9 @@
-import { ProductService } from './../../services/product-service';
-import { Product } from './../../models/products';
+import { ProductService } from '../../../services/product-service';
+import { Product } from '../../../models/products';
 import { Component, inject } from '@angular/core';
-import { CategoryService } from '../../services/category-service';
+import { CategoryService } from '../../../services/category-service';
 import { Router } from '@angular/router';
-import { Category } from '../../models/category';
+import { Category } from '../../../models/category';
 
 @Component({
   selector: 'app-category-create',

@@ -1,0 +1,595 @@
+<div class="container py-5">
+
+  <!-- =====================================================
+       ÜST BAŞLIK
+  ====================================================== -->
+
+  <div
+    class="d-flex
+           flex-column
+           flex-md-row
+           justify-content-between
+           align-items-md-center
+           gap-3
+           mb-4"
+  >
+
+    <div>
+
+      <span
+        class="text-uppercase fw-semibold"
+        style="
+          font-size: 10px;
+          letter-spacing: 2px;
+          color: #8A653B;
+        "
+      >
+        KATEGORİ YÖNETİMİ
+      </span>
+
+      <h1
+        class="mt-2 mb-1 fw-bold"
+        style="
+          color: #3b302a;
+          font-family: Georgia, 'Times New Roman', serif;
+          font-size: 30px;
+        "
+      >
+        Kategori Listesi
+      </h1>
+
+      <p
+        class="mb-0"
+        style="
+          color: #8c786d;
+          font-size: 13px;
+        "
+      >
+        Mağazanızdaki ürün kategorilerini buradan yönetebilirsiniz.
+      </p>
+
+    </div>
+
+
+    <!-- YENİ KATEGORİ -->
+
+    <a
+      class="btn d-flex align-items-center justify-content-center gap-2"
+      [routerLink]="['create']"
+      style="
+        background-color: #8A653B;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 11px 18px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.25s ease;
+      "
+    >
+
+      <svg
+        width="17"
+        height="17"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 5v14M5 12h14"
+        />
+      </svg>
+
+      Yeni Kategori Oluştur
+
+    </a>
+
+  </div>
+
+
+  <!-- =====================================================
+       KATEGORİ SAYISI
+  ====================================================== -->
+
+  <div
+    class="d-flex align-items-center gap-2 mb-3"
+    style="
+      color: #8c786d;
+      font-size: 12px;
+    "
+  >
+
+    <span
+      class="d-inline-flex align-items-center justify-content-center"
+      style="
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background-color: #FAF7F2;
+        color: #8A653B;
+      "
+    >
+
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h10"
+        />
+      </svg>
+
+    </span>
+
+    <span>
+      Toplam kategori:
+
+      <strong style="color: #3b302a;">
+        {{ (categories() ?? []).length }}
+      </strong>
+
+    </span>
+
+  </div>
+
+
+  <!-- =====================================================
+       TABLO
+  ====================================================== -->
+
+  <div
+    class="card border-0 rounded-4 shadow-sm overflow-hidden"
+    style="background-color: #ffffff;"
+  >
+
+    <!-- ÜST ÇİZGİ -->
+
+    <div
+      style="
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          #8A653B,
+          #B8956A,
+          #8A653B
+        );
+      "
+    ></div>
+
+
+    <div class="table-responsive">
+
+      <table
+        class="table mb-0 align-middle"
+        style="min-width: 650px;"
+      >
+
+        <thead>
+
+          <tr
+            style="
+              background-color: #FAF7F2;
+              border-bottom: 1px solid #EEDCD0;
+            "
+          >
+
+            <th
+              class="ps-4 py-3"
+              style="
+                width: 70px;
+                color: #8c786d;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+              "
+            >
+              #
+            </th>
+
+            <th
+              class="py-3"
+              style="
+                color: #8c786d;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+              "
+            >
+              Kategori Adı
+            </th>
+
+            <th
+              class="text-end py-3 pe-4"
+              style="
+                color: #8c786d;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                width: 180px;
+              "
+            >
+              İşlemler
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          @for (
+            item of (categories() ?? []);
+            track item.id;
+            let i = $index
+          ) {
+
+            <tr
+              class="category-row"
+              style="
+                border-bottom: 1px solid #F0EAE4;
+                transition: background-color 0.2s ease;
+              "
+            >
+
+              <!-- SIRA -->
+
+              <td class="ps-4 py-3">
+
+                <span
+                  class="d-inline-flex
+                         align-items-center
+                         justify-content-center"
+                  style="
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 8px;
+                    background-color: #FAF7F2;
+                    color: #8A653B;
+                    font-size: 11px;
+                    font-weight: 600;
+                  "
+                >
+                  {{ i + 1 }}
+                </span>
+
+              </td>
+
+
+              <!-- KATEGORİ -->
+
+              <td class="py-3">
+
+                <div
+                  class="d-flex
+                         align-items-center
+                         gap-3"
+                >
+
+                  <div
+                    class="d-flex
+                           align-items-center
+                           justify-content-center"
+                    style="
+                      width: 38px;
+                      height: 38px;
+                      border-radius: 10px;
+                      background-color: #F4EFEB;
+                      color: #8A653B;
+                    "
+                  >
+
+                    <svg
+                      width="17"
+                      height="17"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4 6h16M4 12h16M4 18h10"
+                      />
+                    </svg>
+
+                  </div>
+
+
+                  <div>
+
+                    <div
+                      style="
+                        color: #3b302a;
+                        font-size: 14px;
+                        font-weight: 600;
+                      "
+                    >
+                      {{ item.categoryName }}
+                    </div>
+
+                    <div
+                      style="
+                        color: #a08e82;
+                        font-size: 11px;
+                        margin-top: 2px;
+                      "
+                    >
+                      Kategori
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </td>
+
+
+              <!-- İŞLEMLER -->
+
+              <td class="text-end pe-4 py-3">
+
+                <div
+                  class="d-flex
+                         justify-content-end
+                         align-items-center
+                         gap-2"
+                >
+
+                  <!-- GÜNCELLE -->
+
+                  <a
+                    [routerLink]="['update', item.id]"
+                    class="action-btn update-btn"
+                    title="Kategoriyi Güncelle"
+                  >
+
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 20h9"
+                      />
+
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"
+                      />
+                    </svg>
+
+                    <span class="d-none d-lg-inline">
+                      Güncelle
+                    </span>
+
+                  </a>
+
+
+                  <!-- SİL -->
+
+                  <button
+                    type="button"
+                    class="action-btn delete-btn"
+                    title="Kategoriyi Sil"
+                    (click)="delete(item.id)"
+                  >
+
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 6h18"
+                      />
+
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8 6V4h8v2"
+                      />
+
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19 6l-1 14H6L5 6"
+                      />
+
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M10 11v5M14 11v5"
+                      />
+                    </svg>
+
+                    <span class="d-none d-lg-inline">
+                      Sil
+                    </span>
+
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOŞ LİSTE
+    ====================================================== -->
+
+    <div
+      *ngIf="(categories() ?? []).length === 0"
+      class="text-center py-5 px-4"
+      style="background-color: #FAF7F2;"
+    >
+
+      <div
+        class="d-flex
+               align-items-center
+               justify-content-center
+               mx-auto
+               mb-3"
+        style="
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: white;
+          border: 1px solid #EEDCD0;
+          color: #8A653B;
+        "
+      >
+
+        <svg
+          width="21"
+          height="21"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h10"
+          />
+        </svg>
+
+      </div>
+
+
+      <h5
+        class="fw-bold mb-1"
+        style="color: #3b302a;"
+      >
+        Henüz kategori bulunmuyor
+      </h5>
+
+
+      <p
+        class="mb-3"
+        style="
+          color: #8c786d;
+          font-size: 13px;
+        "
+      >
+        İlk kategorinizi oluşturarak başlayabilirsiniz.
+      </p>
+
+
+      <a
+        [routerLink]="['create']"
+        class="btn"
+        style="
+          background-color: #8A653B;
+          color: white;
+          border-radius: 10px;
+          padding: 9px 16px;
+          font-size: 12px;
+          font-weight: 600;
+        "
+      >
+        Yeni Kategori Oluştur
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<style>
+
+  .category-row:hover {
+    background-color: #FCFAF8 !important;
+  }
+
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    min-width: 38px;
+    height: 34px;
+
+    padding: 0 11px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .action-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .update-btn {
+    color: #8A653B;
+    background-color: #FAF7F2;
+    border: 1px solid #EEDCD0;
+  }
+
+  .update-btn:hover {
+    color: white;
+    background-color: #8A653B;
+    border-color: #8A653B;
+  }
+
+  .delete-btn {
+    color: #A65D4F;
+    background-color: #FFF8F6;
+    border: 1px solid #EBD8D2;
+  }
+
+  .delete-btn:hover {
+    color: white;
+    background-color: #A65D4F;
+    border-color: #A65D4F;
+  }
+
+</style>

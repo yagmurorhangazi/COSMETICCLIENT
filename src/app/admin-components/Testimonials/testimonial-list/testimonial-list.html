@@ -1,0 +1,69 @@
+<div class="testimonial-page">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Yorum / Referans Listesi</h1>
+      <p class="page-subtitle">{{ testimonials.length }} yorum listeleniyor</p>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <table class="modern-table">
+      <colgroup>
+        <col style="width: 56px" />
+        <col style="width: 74px" />
+        <col style="width: 180px" />
+        <col />
+        <col style="width: 90px" />
+        <col style="width: 90px" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Görsel</th>
+          <th>Ad Soyad</th>
+          <th>Yorum</th>
+          <th>Puan</th>
+          <th class="col-actions">Sil</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of testimonials; track item.id) {
+          <tr>
+            <td><span class="index-badge">{{ $index + 1 }}</span></td>
+            <td>
+              <div class="avatar-thumb">
+                <img [src]="item.imageUrl" [alt]="item.fullName" />
+              </div>
+            </td>
+            <td class="person-name">{{ item.fullName }}</td>
+            <td class="comment-text">{{ item.comment }}</td>
+            <td>
+              <span class="rating-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                {{ item.rating }}
+              </span>
+            </td>
+            <td class="col-actions">
+              <div class="actions-wrap">
+                <button class="icon-btn delete" (click)="deleteTestimonial(item.id)" title="Sil">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18"/>
+                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                  </svg>
+                  Sil
+                </button>
+              </div>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="6" class="empty-state">Henüz yorum eklenmemiş.</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

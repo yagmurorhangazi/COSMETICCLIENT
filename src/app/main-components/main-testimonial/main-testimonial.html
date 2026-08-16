@@ -1,53 +1,105 @@
-<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto bg-surface-bright">
-<div class="text-center mb-stack-lg">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Loved by You</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Real results from our community.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<!-- Card 1 -->
-<div class="bg-surface-container-low p-8 flex flex-col items-center text-center shadow-sm">
-<div class="w-20 h-20 rounded-full overflow-hidden mb-stack-md">
+<section id="testimonial" class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto bg-surface-bright">
+  <div class="text-center mb-stack-lg">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Müşterilerimizin Yorumları</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant">Topluluğumuzdan gerçek sonuçlar.</p>
+  </div>
 
-            </div>
-<div class="flex gap-1 mb-stack-sm text-secondary">
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-</div>
-<p class="font-body-md italic text-on-surface mb-stack-md">"Lumière transformed my skincare routine. The Botanical Radiance Serum is a game-changer."</p>
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Elena Rossi</span>
-</div>
-<!-- Card 2 -->
-<div class="bg-surface-container-low p-8 flex flex-col items-center text-center shadow-sm">
-<div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center mb-stack-md">
-<span class="material-symbols-outlined text-primary text-[32px]">person</span>
-</div>
-<div class="flex gap-1 mb-stack-sm text-secondary">
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-</div>
-<p class="font-body-md italic text-on-surface mb-stack-md">"Finally, a brand that understands sensitive skin. The Purifying Cleansing Oil is so gentle yet effective."</p>
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Sophia Chen</span>
-</div>
-<!-- Card 3 -->
-<div class="bg-surface-container-low p-8 flex flex-col items-center text-center shadow-sm">
-<div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center mb-stack-md">
-<span class="material-symbols-outlined text-primary text-[32px]">person</span>
-</div>
-<div class="flex gap-1 mb-stack-sm text-secondary">
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1">star</span>
-</div>
-<p class="font-body-md italic text-on-surface mb-stack-md">"The luxury feel and the visible results make Lumière my only choice for skincare."</p>
-<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">Isabella Martinez</span>
-</div>
-</div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+
+    <!-- Dinamik Kart (*ngFor) -->
+    <div *ngFor="let item of testimonials" class="bg-surface-container-low p-8 flex flex-col items-center text-center shadow-sm">
+
+      <!-- Profil Görseli veya Varsayılan İkon -->
+      <ng-container *ngIf="item.imageUrl; else defaultAvatar">
+        <img [src]="item.imageUrl" [alt]="item.fullName" class="w-20 h-20 rounded-full object-cover mb-stack-md" />
+      </ng-container>
+      <ng-template #defaultAvatar>
+        <div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center mb-stack-md">
+          <span class="material-symbols-outlined text-primary text-[32px]">person</span>
+        </div>
+      </ng-template>
+
+      <!-- Dinamik Puan (Yıldızlar) -->
+      <div class="flex gap-1 mb-stack-sm text-secondary">
+        <span *ngFor="let star of getStars(item.rating)"
+              class="material-symbols-outlined text-[18px]"
+              style="font-variation-settings: 'FILL' 1">
+          star
+        </span>
+      </div>
+
+      <!-- Yorum Metni -->
+      <p class="font-body-md italic text-on-surface mb-stack-md">
+        "{{ item.comment }}"
+      </p>
+
+      <!-- Müşteri Adı Soyadı -->
+      <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary">
+        {{ item.fullName }}
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- Yorum Yap Butonu -->
+  <div class="text-center mt-12">
+    <button type="button"
+            class="btn btn-outline-dark px-4 py-2 border border-dark rounded-0"
+            data-bs-toggle="modal"
+            data-bs-target="#testimonialModal">
+      💬 Ürünlerimiz hakkında ne düşünüyorsunuz?
+    </button>
+  </div>
+
 </section>
+
+<!-- Yorum Gönderme Modal Penceresi (Pop-up Form) -->
+<div class="modal fade" id="testimonialModal" tabindex="-1" aria-labelledby="testimonialModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold" id="testimonialModalLabel">Değerlendirmenizi Paylaşın</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form (ngSubmit)="submitTestimonial()" #testimonialForm="ngForm">
+
+          <div class="mb-3">
+            <label class="form-label small text-muted">Ad Soyad</label>
+            <input type="text" class="form-control" [(ngModel)]="newTestimonial.fullName" name="fullName" placeholder="Örn: Elif Yılmaz" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small text-muted">Profil Görsel URL (Opsiyonel)</label>
+            <input type="text" class="form-control" [(ngModel)]="newTestimonial.imageUrl" name="imageUrl" placeholder="https://...">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small text-muted">Puanınız</label>
+            <select class="form-select" [(ngModel)]="newTestimonial.rating" name="rating" required>
+              <option [ngValue]="5">⭐⭐⭐⭐⭐ (5 - Mükemmel)</option>
+              <option [ngValue]="4">⭐⭐⭐⭐ (4 - Çok İyi)</option>
+              <option [ngValue]="3">⭐⭐⭐ (3 - Ortalama)</option>
+              <option [ngValue]="2">⭐⭐ (2 - Kötü)</option>
+              <option [ngValue]="1">⭐ (1 - Çok Kötü)</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small text-muted">Yorumunuz</label>
+            <textarea class="form-control" [(ngModel)]="newTestimonial.comment" name="comment" rows="3" placeholder="Ürünler hakkında deneyimlerinizi yazın..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-dark w-100" [disabled]="!testimonialForm.form.valid">
+            Yorum Gönder
+          </button>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
