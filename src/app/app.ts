@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { Product } from './models/products';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,6 @@ import { Component, signal } from '@angular/core';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('cosmeticClient');
+
+
 }

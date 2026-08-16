@@ -1,0 +1,30 @@
+<h3>Yeni Ürün Oluştur</h3>
+
+<form #updateForm="ngForm" (ngSubmit)="create()">
+
+  <label>Ürün Adı</label>
+  <input type="text" name="name" class="form-control" [(ngModel)]="product.name" required="">
+<br>
+
+  <label>Ürün Görsel Url</label>
+  <input type="text" name="imageUrl" class="form-control" [(ngModel)]="product.imageUrl" required="">
+<br>
+
+  <label>Ürün Fiyatı</label>
+  <input type="text" name="price" class="form-control" [(ngModel)]="product.price" required="">
+<br>
+
+  <label>Kategori</label>
+  <select type="text" name="categoryId" class="form-control" [(ngModel)]="product.categoryId" required="">
+  <option disabled selected>------Kategori Seçiniz------</option>
+
+    @for (category of categories(); track $index) {
+    <option value="{{category.id}}">{{category.categoryName}}</option>
+  }
+
+  </select>
+<br>
+<button class="btn btn-dark" type="submit">Ürün Ekle</button>
+
+</form>
+

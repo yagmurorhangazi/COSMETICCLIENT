@@ -1,0 +1,38 @@
+<h3>{{title}}</h3>
+
+<table class="table table-bordered table-hover">
+<thead>
+  <tr>
+    <th>#</th>
+    <th>Ürün Adı</th>
+    <th>Ürün Fiyatı</th>
+    <th>Görsel</th>
+    <th>Kategori</th>
+    <th>Sil</th>
+    <th>Güncelle</th>
+  </tr>
+</thead>
+
+<tbody>
+
+  @for (item of products(); track $index) {
+
+    <tr>
+
+      <th>{{$index + 1}}</th>
+      <td><img src="{{item.imageUrl}}" style="width: 75px; height: 75px;"></td>
+      <td>{{item.name}}</td>
+      <td>{{item.price}} TL</td>
+      <td>{{item.category.categoryName}} TL</td>
+      <td><a class ="btn btn-danger">Sil</a></td>
+      <td><a class ="btn btn-info">Güncelle</a></td>
+
+
+    </tr>
+  }
+  </tbody>
+
+</table>
+
+<a class="btn btn-dark" routerLink="create">Yeni Ürün Oluştur</a>
+

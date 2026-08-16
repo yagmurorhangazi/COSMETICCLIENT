@@ -1,0 +1,13 @@
+<h3>Kategori Güncelle</h3>
+
+<form #updateForm="ngForm" (ngSubmit)="update()">
+   <input type="hidden" name ="id" [(ngModel)]="category.id">
+  <label>Kategori Adı</label>
+
+  <input type="text" name="categoryName" class="form-control" [(ngModel)]="category.categoryName" required="">
+  <br>
+  <button class="btn btn-dark" type="submit">Güncelle</button>
+
+
+
+</form>

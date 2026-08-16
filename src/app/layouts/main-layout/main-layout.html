@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LUMIÈRE COSMÉTIQUES</title>
+
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar Shared Component -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm transition-all duration-500 ease-in-out">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto">
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<!-- Navigation Links (Desktop) -->
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Collections</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Services</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Ingredients</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">Our Story</a>
+</div>
+<!-- Brand Logo -->
+<div class="absolute left-1/2 -translate-x-1/2">
+<a class="font-headline-md text-headline-md tracking-widest text-primary uppercase" href="#">LUMIÈRE</a>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-stack-md text-primary">
+<button class="hover:text-secondary transition-colors duration-300">
+<span class="material-symbols-outlined text-[24px]" data-icon="person">person</span>
+</button>
+<button class="hover:text-secondary transition-colors duration-300">
+<span class="material-symbols-outlined text-[24px]" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<!-- Footer Shared Component -->
+
+<footer class="w-full rounded-none bg-surface-container-low dark:bg-surface-container-highest">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<!-- Brand Column -->
+<div class="flex flex-col gap-stack-md">
+<a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim uppercase tracking-widest" href="#">LUMIÈRE</a>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mt-4">
+                    Defining modern luxury through pure, botanical formulations and mindful aesthetics.
+                </p>
+</div>
+<!-- Links Column -->
+<div class="flex flex-col gap-stack-sm md:col-start-3">
+<span class="font-label-sm text-label-sm text-on-surface mb-2 tracking-widest">SUPPORT</span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Shipping &amp; Returns</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col gap-stack-sm">
+<span class="font-label-sm text-label-sm text-on-surface mb-2 tracking-widest">COMPANY</span>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Sustainability</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Careers</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Contact Us</a>
+</div>
+</div>
+<!-- Copyright -->
+<div class="border-t border-outline-variant/30 py-stack-md px-margin-mobile md:px-margin-desktop flex justify-center items-center max-w-container-max mx-auto">
+<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-widest">© 2024 LUMIÈRE COSMÉTIQUES. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+</body></html>
