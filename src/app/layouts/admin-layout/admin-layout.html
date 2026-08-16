@@ -1,80 +1,321 @@
-<body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Admin Paneli</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">CosmeticClient</div>
-                            <a class="nav-link" routerLink="">
-                                <div class="sb-nav-link-icon"><i class="fa fa-home"></i></div>
-                                Siteye Git
-                            </a>
-                            <a class="nav-link" routerLink="categories">
-                                <div class="sb-nav-link-icon"><i class="fa fa-list"></i></div>
-                                Kategoriler
-                            </a>
-                             <a class="nav-link" routerLink="products">
-                                <div class="sb-nav-link-icon"><i class="fa fa-cutlery"></i></div>
-                                Ürünler
-                            </a>
-<a class="nav-link" routerLink="/admin/testimonials">
-    <div class="sb-nav-link-icon"><i class="fa fa-comments"></i></div>
-    Yorumlar
+<div class="flex h-screen bg-[#F8F5F0] text-[#3B302A] font-sans overflow-hidden">
+
+  <aside class="w-64 bg-[#FCFAF7] border-r border-[#E8DDD4] flex flex-col">
+
+    <div class="px-7 pt-8 pb-7">
+
+   <a
+  routerLink="/admin"
+  class="no-underline text-[#4A3B32] hover:text-[#4A3B32]"
+>
+  <h1 class="font-serif text-lg tracking-[0.01em] font-medium text-[#4A3B32]">
+    LUMIÈRE
+  </h1>
+
+  <p class="mt-1 text-[8px] tracking-[0.10em] uppercase text-[#A58C7A]">
+    Yönetim Paneli
+  </p>
 </a>
+    </div>
+
+
+    <div class="px-5 mb-3">
+
+      <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-[#A99A90]">
+        Menü
+      </span>
+
+    </div>
+
+
+    <nav class="flex-1 px-4 space-y-1">
+
+
+      <a
+        routerLink="/admin"
+        routerLinkActive="active-menu"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="admin-menu"
+      >
+
+        <span class="material-symbols-outlined">
+          dashboard
+        </span>
+
+        <span>Kontrol Paneli</span>
+
+      </a>
+
+
+      <a
+      routerLink="/admin/categories"
+        routerLinkActive="active-menu"
+        class="admin-menu"
+      >
+
+        <span class="material-symbols-outlined">
+          category
+        </span>
+
+        <span>Kategoriler</span>
+
+      </a>
+
+
+      <a
+        routerLink="/admin/products"
+        routerLinkActive="active-menu"
+        class="admin-menu"
+      >
+
+        <span class="material-symbols-outlined">
+          inventory_2
+        </span>
+
+        <span>Ürünler</span>
+
+      </a>
 
 
 
 
 
+      <a
+         routerLink="/admin/testimonials"
+        routerLinkActive="active-menu"
+        class="admin-menu"
+      >
+
+        <span class="material-symbols-outlined">
+          reviews
+        </span>
+
+        <span>Yorumlar</span>
+
+      </a>
 
 
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Şu kullanıcı olarak oturum açıldı:</div>
+      <div class="pt-8 pb-3 px-3">
 
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container">
-                      <router-outlet></router-outlet>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Tüm Hakları Saklıdır</div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+        <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-[#A99A90]">
+          Kısayol
+        </span>
+
+      </div>
+
+
+      <a
+        routerLink="/"
+        class="admin-menu"
+      >
+
+        <span class="material-symbols-outlined">
+          home
+        </span>
+
+        <span>Siteye Git</span>
+
+      </a>
+
+    </nav>
+
+
+    <div class="p-5">
+
+      <div class="rounded-xl bg-[#F5F0EA] border border-[#E8DDD4] p-3">
+
+        <div class="flex items-center gap-3">
+
+          <div class="w-9 h-9 rounded-full bg-[#9A7B52] flex items-center justify-center">
+
+            <span class="material-symbols-outlined text-white text-[17px]">
+              person
+            </span>
+
+          </div>
+
+          <div>
+
+            <p class="text-xs font-semibold text-[#4A3B32]">
+              Admin
+            </p>
+
+            <p class="text-[9px] text-[#A08E81] mt-0.5">
+              Yönetici
+            </p>
+
+          </div>
+
         </div>
 
-    </body>
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+
+    <header class="h-[72px] bg-white border-b border-[#E8DDD4] flex items-center justify-between px-8">
+
+      <div>
+
+        <p class="text-[9px] uppercase tracking-[0.2em] text-[#A58C7A]">
+          LUMIÈRE COSMETIC
+        </p>
+
+        <h2 class="font-serif text-xl text-[#3B302A] mt-0.5">
+          Kontrol Paneli
+        </h2>
+
+      </div>
+
+
+      <div class="flex items-center gap-3">
+
+
+        <button
+          type="button"
+          class="w-9 h-9 rounded-lg border border-[#E8DDD4] bg-white flex items-center justify-center text-[#8C786D] hover:text-[#9A7B52] hover:border-[#CDBBA9] transition-all"
+        >
+
+          <span class="material-symbols-outlined text-[18px]">
+            notifications
+          </span>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="w-9 h-9 rounded-lg border border-[#E8DDD4] bg-white flex items-center justify-center text-[#8C786D] hover:text-[#9A7B52] hover:border-[#CDBBA9] transition-all"
+        >
+
+          <span class="material-symbols-outlined text-[18px]">
+            settings
+          </span>
+
+        </button>
+
+
+        <div class="h-7 w-px bg-[#E8DDD4] mx-2"></div>
+
+
+        <button
+          type="button"
+          class="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#9A7B52] text-white hover:bg-[#80623F] transition-all"
+        >
+
+          <span class="material-symbols-outlined text-[17px]">
+            logout
+          </span>
+
+          <span class="text-xs font-medium">
+            Çıkış
+          </span>
+
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <div class="flex-1 overflow-y-auto">
+
+      <div class="p-8">
+
+        <router-outlet></router-outlet>
+
+      </div>
+
+    </div>
+
+
+    <footer class="h-12 bg-white border-t border-[#E8DDD4] flex items-center justify-between px-8">
+
+      <span class="text-[10px] text-[#A3948A]">
+        © 2026 Lumière Cosmetic
+      </span>
+
+      <span class="text-[10px] text-[#A3948A]">
+        Yönetim Paneli
+      </span>
+
+    </footer>
+
+  </main>
+
+
+  <style>
+
+    .admin-menu {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      gap: 13px;
+
+      width: 100%;
+      height: 44px;
+
+      padding: 0 13px;
+
+      border-radius: 9px;
+
+      color: #76675D;
+
+      text-decoration: none;
+
+      font-size: 12px;
+      font-weight: 500;
+
+      transition: all 0.2s ease;
+    }
+
+    .admin-menu .material-symbols-outlined {
+      font-size: 19px;
+      color: #A08D7E;
+
+      transition: color 0.2s ease;
+    }
+
+    .admin-menu:hover {
+      background: #F5F0EA;
+      color: #4A3B32;
+    }
+
+    .admin-menu:hover .material-symbols-outlined {
+      color: #9A7B52;
+    }
+
+    .admin-menu.active-menu {
+      background: #F1E8DE;
+      color: #6F5034;
+      font-weight: 600;
+    }
+
+    .admin-menu.active-menu::before {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+
+      width: 3px;
+
+      border-radius: 0 4px 4px 0;
+
+      background: #9A7B52;
+    }
+
+    .admin-menu.active-menu .material-symbols-outlined {
+      color: #9A7B52;
+    }
+
+  </style>
+
+</div>

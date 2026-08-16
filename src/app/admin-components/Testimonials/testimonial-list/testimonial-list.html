@@ -1,69 +1,464 @@
 <div class="testimonial-page">
+
   <div class="page-header">
     <div>
-      <h1 class="page-title">Yorum / Referans Listesi</h1>
-      <p class="page-subtitle">{{ testimonials.length }} yorum listeleniyor</p>
+      <span class="eyebrow">MÜŞTERİ MEMNUNİYETİ</span>
+      <h1 class="page-title">Yorumlar & Referanslar</h1>
+      <p class="page-subtitle">
+        {{ testimonials.length }} yorum listeleniyor
+      </p>
+    </div>
+
+    <div class="total-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.38 8.38 0 0 1-8.5-9A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5Z"/>
+        <path d="M8 12h8"/>
+        <path d="M8 8h5"/>
+        <path d="M8 16h6"/>
+      </svg>
+      <span>{{ testimonials.length }} Yorum</span>
     </div>
   </div>
 
   <div class="table-card">
-    <table class="modern-table">
-      <colgroup>
-        <col style="width: 56px" />
-        <col style="width: 74px" />
-        <col style="width: 180px" />
-        <col />
-        <col style="width: 90px" />
-        <col style="width: 90px" />
-      </colgroup>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Görsel</th>
-          <th>Ad Soyad</th>
-          <th>Yorum</th>
-          <th>Puan</th>
-          <th class="col-actions">Sil</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (item of testimonials; track item.id) {
+
+    <div class="table-header">
+      <div>
+        <h2>Gelen Yorumlar</h2>
+        <p>Müşterilerinizin ürün ve hizmetleriniz hakkındaki değerlendirmeleri</p>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+
+      <table class="modern-table">
+
+        <colgroup>
+          <col style="width: 65px">
+          <col style="width: 80px">
+          <col style="width: 190px">
+          <col>
+          <col style="width: 100px">
+          <col style="width: 100px">
+        </colgroup>
+
+        <thead>
           <tr>
-            <td><span class="index-badge">{{ $index + 1 }}</span></td>
-            <td>
-              <div class="avatar-thumb">
-                <img [src]="item.imageUrl" [alt]="item.fullName" />
-              </div>
-            </td>
-            <td class="person-name">{{ item.fullName }}</td>
-            <td class="comment-text">{{ item.comment }}</td>
-            <td>
-              <span class="rating-badge">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                {{ item.rating }}
-              </span>
-            </td>
-            <td class="col-actions">
-              <div class="actions-wrap">
-                <button class="icon-btn delete" (click)="deleteTestimonial(item.id)" title="Sil">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <th>#</th>
+            <th>Görsel</th>
+            <th>Ad Soyad</th>
+            <th>Yorum</th>
+            <th>Puan</th>
+            <th class="col-actions">İşlem</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          @for (item of testimonials; track item.id) {
+
+            <tr>
+
+              <td>
+                <span class="index-badge">
+                  {{ $index + 1 }}
+                </span>
+              </td>
+
+              <td>
+                <div class="avatar-thumb">
+                  <img
+                    [src]="item.imageUrl || 'https://placehold.co/80x80/F4EFEB/8A653B?text=Y'"
+                    [alt]="item.fullName"
+                  >
+                </div>
+              </td>
+
+              <td>
+                <div class="person-info">
+                  <span class="person-name">
+                    {{ item.fullName }}
+                  </span>
+                  <span class="person-label">
+                    Müşteri
+                  </span>
+                </div>
+              </td>
+
+              <td>
+                <div class="comment-text">
+                  {{ item.comment }}
+                </div>
+              </td>
+
+              <td>
+
+                <span class="rating-badge">
+
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+
+                  {{ item.rating }}
+
+                </span>
+
+              </td>
+
+              <td class="col-actions">
+
+                <button
+                  type="button"
+                  class="delete-btn"
+                  (click)="deleteTestimonial(item.id)"
+                  title="Yorumu Sil"
+                >
+
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 6h18"/>
                     <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                     <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                    <path d="M10 11v6"/>
+                    <path d="M14 11v6"/>
                   </svg>
-                  Sil
+
+                  <span>Sil</span>
+
                 </button>
-              </div>
-            </td>
-          </tr>
-        } @empty {
-          <tr>
-            <td colspan="6" class="empty-state">Henüz yorum eklenmemiş.</td>
-          </tr>
-        }
-      </tbody>
-    </table>
+
+              </td>
+
+            </tr>
+
+          } @empty {
+
+            <tr>
+
+              <td colspan="6">
+
+                <div class="empty-state">
+
+                  <div class="empty-icon">
+
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.38 8.38 0 0 1-8.5-9A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5Z"/>
+                      <path d="M8 12h8"/>
+                      <path d="M8 8h5"/>
+                    </svg>
+
+                  </div>
+
+                  <h3>Henüz yorum bulunmuyor</h3>
+
+                  <p>
+                    Müşterilerinizden gelen yorumlar burada görüntülenecektir.
+                  </p>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
   </div>
+
 </div>
+
+<style>
+
+.testimonial-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 45px 35px 70px;
+  color: #3b302a;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #8A653B;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.page-title {
+  margin: 0;
+  color: #332a25;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.page-subtitle {
+  margin: 8px 0 0;
+  color: #9a887d;
+  font-size: 13px;
+}
+
+.total-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: 1px solid #EEDCD0;
+  border-radius: 12px;
+  background: #FAF7F2;
+  color: #8A653B;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.table-card {
+  overflow: hidden;
+  border: 1px solid #EEDCD0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(85, 65, 50, 0.06);
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  padding: 23px 25px;
+  border-bottom: 1px solid #F0E8E2;
+  background: #FCFAF8;
+}
+
+.table-header h2 {
+  margin: 0 0 4px;
+  color: #3b302a;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.table-header p {
+  margin: 0;
+  color: #9a887d;
+  font-size: 11px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.modern-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+}
+
+.modern-table thead {
+  background: #FAF7F2;
+}
+
+.modern-table th {
+  padding: 14px 18px;
+  border-bottom: 1px solid #EEDCD0;
+  color: #806f64;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.modern-table td {
+  padding: 17px 18px;
+  border-bottom: 1px solid #F2ECE7;
+  vertical-align: middle;
+}
+
+.modern-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.modern-table tbody tr:hover {
+  background-color: #FCFAF8;
+}
+
+.modern-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.index-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #F4EFEB;
+  color: #8A653B;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.avatar-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  border: 1px solid #EEDCD0;
+  border-radius: 12px;
+  background: #F8F4EF;
+}
+
+.avatar-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.person-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.person-name {
+  color: #3b302a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.person-label {
+  color: #ad9d92;
+  font-size: 10px;
+}
+
+.comment-text {
+  max-width: 500px;
+  overflow: hidden;
+  color: #75675f;
+  font-size: 12px;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 9px;
+  border: 1px solid #E8D7BD;
+  border-radius: 8px;
+  background: #FFF9EF;
+  color: #9A6F2F;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.rating-badge svg {
+  color: #C18A32;
+}
+
+.col-actions {
+  text-align: center !important;
+}
+
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid #E9CFC9;
+  border-radius: 9px;
+  background: #FFF8F7;
+  color: #A65D4F;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  border-color: #A65D4F;
+  background: #A65D4F;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(166, 93, 79, 0.15);
+}
+
+.empty-state {
+  padding: 65px 25px !important;
+  text-align: center;
+}
+
+.empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 15px;
+  border: 1px solid #EEDCD0;
+  border-radius: 15px;
+  background: #FAF7F2;
+  color: #8A653B;
+}
+
+.empty-state h3 {
+  margin: 0 0 6px;
+  color: #3b302a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #9a887d;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+
+  .testimonial-page {
+    padding: 30px 18px 50px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .page-title {
+    font-size: 25px;
+  }
+
+  .total-badge {
+    align-self: flex-start;
+  }
+
+  .table-header {
+    padding: 18px;
+  }
+
+}
+
+</style>

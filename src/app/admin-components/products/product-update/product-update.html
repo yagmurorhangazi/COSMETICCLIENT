@@ -1,24 +1,584 @@
-<h3>Ürünü Güncelle</h3>
+<div class="container py-5">
 
-<form #updateForm="ngForm" (ngSubmit)="update()">
-<input type="hidden" name="id"[(ngModel)]="product.id">
-  <label>Ürün Adı</label>
-  <input type="text" name="name" class="form-control" [(ngModel)]="product.name" required="">
-<br>
-  <label>Ürün Görseli</label>
-  <input type="text" name="imageUrl" class="form-control" [(ngModel)]="product.imageUrl" required="">
-<br>
-  <label>Ürün Fiyatı</label>
-  <input type="text" name="price" class="form-control" [(ngModel)]="product.price" required="">
-<br>
-  <label>Kategori</label>
-  <select type="text" name="categoryId" class="form-control" [(ngModel)]="product.categoryId" required="">
-    <option disabled selected>---Kategori Seçiniz---</option>
-    @for (category of categories(); track $index) {
-    <option value="{{category.id}}">{{category.categoryName}}</option>
-    }
-  </select>
-<br>
-<button class="btn btn-dark" type="submit" [disabled]="updateForm.invalid || !updateForm.dirty">Ürünü Güncelle</button>
+  <div class="mb-4">
 
-</form>
+    <span
+      class="text-uppercase fw-semibold"
+      style="
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: #8A653B;
+      "
+    >
+      ÜRÜN YÖNETİMİ
+    </span>
+
+    <h1
+      class="mt-2 mb-1 fw-bold"
+      style="
+        color: #3b302a;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 30px;
+      "
+    >
+      Ürünü Güncelle
+    </h1>
+
+    <p
+      class="mb-0"
+      style="
+        color: #8c786d;
+        font-size: 13px;
+      "
+    >
+      Mevcut ürün bilgilerini düzenleyerek güncelleyebilirsiniz.
+    </p>
+
+  </div>
+
+  <div
+    class="card border-0 shadow-sm rounded-4 overflow-hidden"
+    style="
+      max-width: 700px;
+      background-color: #ffffff;
+    "
+  >
+
+    <div
+      style="
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          #8A653B,
+          #B8956A,
+          #8A653B
+        );
+      "
+    ></div>
+
+    <div class="p-4 p-md-5">
+
+      <div
+        class="d-flex align-items-center gap-3 mb-4 pb-4"
+        style="
+          border-bottom: 1px solid #EEDCD0;
+        "
+      >
+
+        <div
+          class="d-flex align-items-center justify-content-center"
+          style="
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background-color: #F4EFEB;
+            color: #8A653B;
+          "
+        >
+
+          <svg
+            width="21"
+            height="21"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 20h9"
+            />
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"
+            />
+          </svg>
+
+        </div>
+
+        <div>
+
+          <h5
+            class="mb-1 fw-bold"
+            style="color: #3b302a;"
+          >
+            Ürün Bilgileri
+          </h5>
+
+          <p
+            class="mb-0"
+            style="
+              color: #9a887d;
+              font-size: 12px;
+            "
+          >
+            Ürünün mevcut bilgilerini düzenleyin.
+          </p>
+
+        </div>
+
+      </div>
+
+      <form
+        #updateForm="ngForm"
+        (ngSubmit)="update()"
+        novalidate
+      >
+
+        <input
+          type="hidden"
+          name="id"
+          [(ngModel)]="product.id"
+        >
+
+        <div class="mb-4">
+
+          <label
+            for="productName"
+            class="form-label fw-semibold"
+            style="
+              color: #4a3b32;
+              font-size: 13px;
+            "
+          >
+            Ürün Adı
+            <span style="color: #A65D4F;">*</span>
+          </label>
+
+          <input
+            id="productName"
+            type="text"
+            name="name"
+            class="form-control product-input"
+            [(ngModel)]="product.name"
+            #name="ngModel"
+            required
+            minlength="3"
+            maxlength="50"
+            placeholder="Ürün adını giriniz"
+          >
+
+          <div
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+            class="validation-message"
+          >
+            <span *ngIf="name.errors?.['required']">
+              Ürün adı boş bırakılamaz.
+            </span>
+
+            <span *ngIf="name.errors?.['minlength']">
+              Ürün adı en az 3 karakter olmalıdır.
+            </span>
+
+            <span *ngIf="name.errors?.['maxlength']">
+              Ürün adı en fazla 50 karakter olabilir.
+            </span>
+          </div>
+
+        </div>
+
+        <div class="mb-4">
+
+          <label
+            for="imageUrl"
+            class="form-label fw-semibold"
+            style="
+              color: #4a3b32;
+              font-size: 13px;
+            "
+          >
+            Ürün Görseli
+            <span style="color: #A65D4F;">*</span>
+          </label>
+
+          <div class="input-with-icon">
+
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="2"
+              />
+
+              <circle
+                cx="8.5"
+                cy="8.5"
+                r="1.5"
+              />
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m21 15-5-5L5 21"
+              />
+            </svg>
+
+            <input
+              id="imageUrl"
+              type="url"
+              name="imageUrl"
+              class="form-control product-input ps-5"
+              [(ngModel)]="product.imageUrl"
+              #imageUrl="ngModel"
+              required
+              placeholder="https://ornek.com/gorsel.jpg"
+            >
+
+          </div>
+
+          <div
+            *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)"
+            class="validation-message"
+          >
+            Ürün görseli gereklidir.
+          </div>
+
+        </div>
+
+        <div class="mb-4">
+
+          <label
+            for="price"
+            class="form-label fw-semibold"
+            style="
+              color: #4a3b32;
+              font-size: 13px;
+            "
+          >
+            Ürün Fiyatı
+            <span style="color: #A65D4F;">*</span>
+          </label>
+
+          <div class="price-input-wrapper">
+
+            <input
+              id="price"
+              type="number"
+              name="price"
+              class="form-control product-input price-input"
+              [(ngModel)]="product.price"
+              #price="ngModel"
+              required
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+            >
+
+            <span class="price-symbol">
+              TL
+            </span>
+
+          </div>
+
+          <div
+            *ngIf="price.invalid && (price.dirty || price.touched)"
+            class="validation-message"
+          >
+
+            <span *ngIf="price.errors?.['required']">
+              Ürün fiyatı boş bırakılamaz.
+            </span>
+
+            <span *ngIf="price.errors?.['min']">
+              Fiyat 0 TL'den küçük olamaz.
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="mb-4">
+
+          <label
+            for="categoryId"
+            class="form-label fw-semibold"
+            style="
+              color: #4a3b32;
+              font-size: 13px;
+            "
+          >
+            Kategori
+            <span style="color: #A65D4F;">*</span>
+          </label>
+
+          <select
+            id="categoryId"
+            name="categoryId"
+            class="form-select product-input"
+            [(ngModel)]="product.categoryId"
+            #categoryId="ngModel"
+            required
+          >
+
+            <option
+              [ngValue]="null"
+              disabled
+            >
+              --- Kategori Seçiniz ---
+            </option>
+
+            @for (category of categories(); track category.id) {
+
+              <option [ngValue]="category.id">
+                {{ category.categoryName }}
+              </option>
+
+            }
+
+          </select>
+
+          <div
+            *ngIf="categoryId.invalid && (categoryId.dirty || categoryId.touched)"
+            class="validation-message"
+          >
+            Lütfen bir kategori seçin.
+          </div>
+
+        </div>
+
+        <div class="info-box mb-4">
+
+          <div
+            class="d-flex align-items-center justify-content-center"
+            style="
+              width: 34px;
+              height: 34px;
+              min-width: 34px;
+              border-radius: 9px;
+              background-color: #ffffff;
+              color: #8A653B;
+            "
+          >
+
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+
+              <circle
+                cx="12"
+                cy="12"
+                r="9"
+              />
+
+              <path
+                stroke-linecap="round"
+                d="M12 11v5"
+              />
+
+              <circle
+                cx="12"
+                cy="8"
+                r=".5"
+                fill="currentColor"
+              />
+
+            </svg>
+
+          </div>
+
+          <span>
+            Değişikliklerinizi kontrol ettikten sonra ürünü güncelleyebilirsiniz.
+          </span>
+
+        </div>
+
+        <div
+          class="d-flex flex-column flex-sm-row justify-content-end gap-2 pt-3"
+          style="
+            border-top: 1px solid #F0EAE4;
+          "
+        >
+
+          <a
+            routerLink="/admin/products"
+            class="btn cancel-btn"
+          >
+            İptal
+          </a>
+
+          <button
+            class="btn update-btn"
+            type="submit"
+            [disabled]="updateForm.invalid || !updateForm.dirty"
+          >
+
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M20 6L9 17l-5-5"
+              />
+
+            </svg>
+
+            Ürünü Güncelle
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+
+.product-input {
+  height: 46px;
+  border: 1px solid #EEDCD0;
+  border-radius: 11px;
+  background-color: #FCFAF8;
+  color: #3b302a;
+  font-size: 13px;
+  padding-left: 14px;
+  padding-right: 14px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.product-input::placeholder {
+  color: #b6a69c;
+}
+
+.product-input:focus {
+  background-color: #ffffff;
+  border-color: #8A653B;
+  box-shadow: 0 0 0 3px rgba(138, 101, 59, 0.10);
+  outline: none;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon svg {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9a887d;
+  z-index: 5;
+}
+
+.price-input-wrapper {
+  position: relative;
+}
+
+.price-input {
+  padding-right: 55px;
+}
+
+.price-symbol {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8A653B;
+  font-size: 12px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.validation-message {
+  color: #A65D4F;
+  font-size: 11px;
+  margin-top: 7px;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 11px;
+  background-color: #FAF7F2;
+  border: 1px solid #EEDCD0;
+  color: #806f64;
+  font-size: 11px;
+}
+
+.cancel-btn {
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border-radius: 10px;
+  background-color: #FAF7F2;
+  border: 1px solid #EEDCD0;
+  color: #6b5b52;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #F1E9E2;
+  color: #3b302a;
+  transform: translateY(-1px);
+}
+
+.update-btn {
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 20px;
+  border-radius: 10px;
+  background-color: #8A653B;
+  border: 1px solid #8A653B;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.update-btn:hover:not(:disabled) {
+  background-color: #73532F;
+  border-color: #73532F;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(138, 101, 59, 0.18);
+}
+
+.update-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+select.product-input {
+  cursor: pointer;
+}
+
+</style>
