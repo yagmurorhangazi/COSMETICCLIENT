@@ -1,10 +1,11 @@
-import { Product } from './../../models/products';
-import { Category } from './../../models/category';
+
 import { Component, inject } from '@angular/core';
-import { ProductService } from '../../services/product-service';
-import { CategoryService } from '../../services/category-service';
 import { Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
+import * as alertifyjs from 'alertifyjs';
+import { ProductService } from '../../services/product-service';
+import { CategoryService } from '../../services/category-service';
+import { Product } from '../../models/products';
 
 @Component({
   selector: 'app-product-create',
@@ -14,23 +15,28 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class ProductCreate {
 
+
 private productService=inject(ProductService);
 private categoryService=inject(CategoryService);
 private router=inject(Router);
 
 
 product:Product=new Product();
-
 categories=toSignal(this.categoryService.getCategories())
 
 create(){
   this.productService.create(this.product).subscribe({
-    complete: ()=>{
-      this.router.navigate(['/admin/categories'])
-    },
-    error: err =>console.log(err)
+    complete:()=>{
 
+      alertifyjs.success('Ürün Başarıyla Eklendi')
+      this.router.navigate(['/admin/products'])
+    },
+    error:err=>{
+      alertifyjs.error('Ürün Eklenemedi')
+      console.log(err)}
   })
 }
+
+
 
 }

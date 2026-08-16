@@ -15,7 +15,7 @@ const routes: Routes = [
 {path : 'admin', component : AdminLayout,children:[
 
 {path : 'products' , component : ProductList},
-{path : 'products/create' , component :ProductCreate},
+{path : 'products/create' , component : ProductCreate},
 {path : 'categories', component : CategoryList},
 {path : 'categories/update/:id', component : CategoryUpdate},
 {path : 'categories/create', component : CategoryCreate}

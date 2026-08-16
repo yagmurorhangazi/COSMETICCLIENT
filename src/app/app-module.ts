@@ -18,6 +18,7 @@ import { MainContact } from './main-components/main-contact/main-contact';
 import { MainBanner } from './main-components/main-banner/main-banner';
 import { MainTestimonial } from './main-components/main-testimonial/main-testimonial';
 import { ProductCreate } from './admin-components/product-create/product-create';
+import { ProductUpdate } from './admin-components/product-update/product-update';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ProductCreate } from './admin-components/product-create/product-create'
     MainBanner,
     MainTestimonial,
     ProductCreate,
+    ProductUpdate,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideHttpClient()],
