@@ -1,77 +1,300 @@
-<!DOCTYPE html>
+<body class="bg-[#FBF9F6] text-[#3B302A] font-sans antialiased overflow-x-hidden">
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LUMIÈRE COSMÉTIQUES</title>
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#FBF9F6]/95 backdrop-blur-md border-b border-[#E8DED4]">
+
+    <nav class="max-w-[1400px] mx-auto px-6 lg:px-10 h-[78px] flex items-center justify-between">
+
+      <div class="hidden md:flex items-center gap-8 lg:gap-10">
+
+        <a
+          routerLink="/products"
+          class="text-[12px] uppercase tracking-[0.18em] font-medium text-[#66564C] hover:text-[#8A653B] transition-colors"
+        >
+          Ürünler
+        </a>
+
+        <a
+          href="#about"
+          class="text-[12px] uppercase tracking-[0.18em] font-medium text-[#66564C] hover:text-[#8A653B] transition-colors"
+        >
+          Hakkımızda
+        </a>
+
+        <a
+          href="#testimonial"
+          class="text-[12px] uppercase tracking-[0.18em] font-medium text-[#66564C] hover:text-[#8A653B] transition-colors"
+        >
+          Referanslar
+        </a>
+
+        <a
+          href="#contact"
+          class="text-[12px] uppercase tracking-[0.18em] font-medium text-[#66564C] hover:text-[#8A653B] transition-colors"
+        >
+          İletişim
+        </a>
+
+      </div>
 
 
-</head>
-<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
-<!-- TopNavBar Shared Component -->
-<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm transition-all duration-500 ease-in-out">
-<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto">
-<!-- Mobile Menu Icon -->
-<button class="md:hidden text-primary">
-<span class="material-symbols-outlined text-[24px]">menu</span>
-</button>
-<!-- Navigation Links (Desktop) -->
-<div class="hidden md:flex items-center gap-stack-lg">
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#products">Ürünler</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#about">Hakkımızda</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#testimonial">Referanslar</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#contact">İletişim</a>
-</div>
-<!-- Brand Logo -->
-<div class="absolute left-1/2 -translate-x-1/2">
-<a class="font-headline-md text-headline-md tracking-widest text-primary uppercase" href="#">LUMIÈRE</a>
-</div>
-<!-- Trailing Icons -->
-<div class="flex items-center gap-stack-md text-primary">
-<button class="hover:text-secondary transition-colors duration-300">
-<span class="material-symbols-outlined text-[24px]" data-icon="person">person</span>
-</button>
-<button class="hover:text-secondary transition-colors duration-300">
-<span class="material-symbols-outlined text-[24px]" data-icon="shopping_bag">shopping_bag</span>
-</button>
-</div>
-</nav>
-</header>
-<main>
-<router-outlet></router-outlet>
-</main>
+      <button
+        class="md:hidden text-[#4A3B32] hover:text-[#8A653B] transition-colors"
+        type="button"
+      >
+        <span class="material-symbols-outlined text-[25px]">
+          menu
+        </span>
+      </button>
 
-<!-- Footer Shared Component -->
-<!-- Testimonial Section -->
 
-<footer class="w-full rounded-none bg-surface-container-low dark:bg-surface-container-highest">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max mx-auto">
-<!-- Brand Column -->
-<div class="flex flex-col gap-stack-md">
-<a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim uppercase tracking-widest" href="#">LUMIÈRE</a>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mt-4">
-                    Modern lüksü; saf, bitkisel formüller ve bilinçli bir estetik anlayışıyla tanımlamak.
+      <div class="absolute left-1/2 -translate-x-1/2">
+
+        <a
+          routerLink="/"
+          class="text-[22px] md:text-[24px] tracking-[0.25em] font-serif font-medium text-[#4A3B32] whitespace-nowrap"
+        >
+          LUMIÈRE
+        </a>
+
+      </div>
+
+
+      <div class="flex items-center gap-5 text-[#4A3B32]">
+
+        <button
+          type="button"
+          class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-[#F1E9E1] hover:text-[#8A653B] transition-all"
+          title="Hesabım"
+        >
+          <span class="material-symbols-outlined text-[22px]">
+            person
+          </span>
+        </button>
+
+        <button
+          type="button"
+          class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-[#F1E9E1] hover:text-[#8A653B] transition-all"
+          title="Sepetim"
+        >
+          <span class="material-symbols-outlined text-[22px]">
+            shopping_bag
+          </span>
+        </button>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <main class="pt-[78px] min-h-screen">
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+
+  <footer class="mt-20 bg-[#F3EEE8] border-t border-[#E4D9CE]">
+
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-16">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20">
+
+
+        <div class="lg:col-span-1">
+
+          <a
+            routerLink="/"
+            class="text-[24px] tracking-[0.25em] font-serif font-medium text-[#4A3B32]"
+          >
+            LUMIÈRE
+          </a>
+
+          <p class="mt-6 text-sm leading-7 text-[#786A60] max-w-sm">
+            Modern güzelliği; zarif tasarım, seçkin ürünler ve
+            kaliteli bir alışveriş deneyimiyle buluşturuyoruz.
+          </p>
+
+          <div class="flex items-center gap-3 mt-7">
+
+            <a
+              href="#"
+              class="w-9 h-9 rounded-full border border-[#D9CABE] flex items-center justify-center text-[#6B5A4E] hover:bg-[#8A653B] hover:text-white hover:border-[#8A653B] transition-all"
+            >
+              <span class="material-symbols-outlined text-[18px]">
+                photo_camera
+              </span>
+            </a>
+
+            <a
+              href="#"
+              class="w-9 h-9 rounded-full border border-[#D9CABE] flex items-center justify-center text-[#6B5A4E] hover:bg-[#8A653B] hover:text-white hover:border-[#8A653B] transition-all"
+            >
+              <span class="material-symbols-outlined text-[18px]">
+                mail
+              </span>
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="text-[11px] uppercase tracking-[0.2em] font-bold text-[#4A3B32] mb-6">
+            Keşfet
+          </h4>
+
+          <div class="flex flex-col gap-4">
+
+            <a
+              routerLink="/products"
+              class="text-sm text-[#786A60] hover:text-[#8A653B] transition-colors"
+            >
+              Tüm Ürünler
+            </a>
+
+            <a
+              href="#about"
+              class="text-sm text-[#786A60] hover:text-[#8A653B] transition-colors"
+            >
+              Hakkımızda
+            </a>
+
+            <a
+              href="#testimonial"
+              class="text-sm text-[#786A60] hover:text-[#8A653B] transition-colors"
+            >
+              Müşteri Yorumları
+            </a>
+
+            <a
+              href="#contact"
+              class="text-sm text-[#786A60] hover:text-[#8A653B] transition-colors"
+            >
+              İletişim
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="text-[11px] uppercase tracking-[0.2em] font-bold text-[#4A3B32] mb-6">
+            Destek
+          </h4>
+
+          <div class="flex flex-col gap-4">
+
+            <a
+              href="#"
+              class="text-sm text-[#786A60] hover:text-[#8A653B] transition-colors"
+            >
+              Teslimat ve İade
+            </a>
+
+            <a
+              href="#"
+              class="text-sm text-[#786A60] hover:text-[#8A653B] transition-colors"
+            >
+              Gizlilik Politikası
+            </a>
+
+            <a
+              href="#"
+              class="text-sm text-[#786A60] hover:text-[#8A653B] transition-colors"
+            >
+              Kullanım Koşulları
+            </a>
+
+            <a
+              href="#"
+              class="text-sm text-[#786A60] hover:text-[#8A653B] transition-colors"
+            >
+              Sıkça Sorulan Sorular
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="text-[11px] uppercase tracking-[0.2em] font-bold text-[#4A3B32] mb-6">
+            Bize Ulaşın
+          </h4>
+
+          <div class="space-y-5">
+
+            <div class="flex gap-3">
+
+              <span class="material-symbols-outlined text-[#8A653B] text-[20px]">
+                mail
+              </span>
+
+              <div>
+                <p class="text-[11px] uppercase tracking-wider text-[#9A897C] mb-1">
+                  E-posta
                 </p>
-</div>
-<!-- Links Column -->
-<div class="flex flex-col gap-stack-sm md:col-start-3">
-<span class="font-label-sm text-label-sm text-on-surface mb-2 tracking-widest">Destek</span>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Teslimat ve İade</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Gizlilik Politikası</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Hizmet Şartları</a>
-</div>
-<!-- Links Column 2 -->
-<div class="flex flex-col gap-stack-sm">
-<span class="font-label-sm text-label-sm text-on-surface mb-2 tracking-widest">ŞİRKET</span>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Sürdürülebilirlik</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">Kariyer</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity" href="#">
-Bize Ulaşın</a>
-</div>
-</div>
-<!-- Copyright -->
-<div class="border-t border-outline-variant/30 py-stack-md px-margin-mobile md:px-margin-desktop flex justify-center items-center max-w-container-max mx-auto">
-<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-widest">© 2026 CosmeticClient. Tüm Hakları Saklıdır.</p>
-</div>
-</footer>
-</body></html>
+
+                <p class="text-sm text-[#5E5047]">
+                  info@lumiere.com
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="flex gap-3">
+
+              <span class="material-symbols-outlined text-[#8A653B] text-[20px]">
+                schedule
+              </span>
+
+              <div>
+
+                <p class="text-[11px] uppercase tracking-wider text-[#9A897C] mb-1">
+                  Çalışma Saatleri
+                </p>
+
+                <p class="text-sm text-[#5E5047]">
+                  Pazartesi - Cumartesi
+                </p>
+
+                <p class="text-xs text-[#8C7C70] mt-1">
+                  09:00 - 18:00
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="mt-14 pt-6 border-t border-[#DED2C7] flex flex-col md:flex-row justify-between items-center gap-4">
+
+        <p class="text-[10px] uppercase tracking-[0.16em] text-[#8C7C70]">
+          © 2026 LUMIÈRE COSMÉTIQUES
+        </p>
+
+        <p class="text-[10px] uppercase tracking-[0.16em] text-[#A08F82]">
+          Tüm Hakları Saklıdır
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>

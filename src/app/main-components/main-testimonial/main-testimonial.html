@@ -64,42 +64,86 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-body">
-        <form (ngSubmit)="submitTestimonial()" #testimonialForm="ngForm">
+      <div class="modal-body px-4 py-4">
+  <form (ngSubmit)="submitTestimonial()" #testimonialForm="ngForm">
 
-          <div class="mb-3">
-            <label class="form-label small text-muted">Ad Soyad</label>
-            <input type="text" class="form-control" [(ngModel)]="newTestimonial.fullName" name="fullName" placeholder="Örn: Elif Yılmaz" required>
-          </div>
+    <div class="mb-3">
+      <label class="form-label small fw-semibold text-uppercase" style="color:#6b5b52; letter-spacing:.08em;">
+        Ad Soyad
+      </label>
+      <input
+        type="text"
+        class="form-control border-0 shadow-sm"
+        [(ngModel)]="newTestimonial.fullName"
+        name="fullName"
+        placeholder="Örn: Elif Yılmaz"
+        required
+        style="background:#FAF7F2; border-radius:10px; padding:12px;"
+      >
+    </div>
 
-          <div class="mb-3">
-            <label class="form-label small text-muted">Profil Görsel URL (Opsiyonel)</label>
-            <input type="text" class="form-control" [(ngModel)]="newTestimonial.imageUrl" name="imageUrl" placeholder="https://...">
-          </div>
+    <div class="mb-3">
+      <label class="form-label small fw-semibold text-uppercase" style="color:#6b5b52; letter-spacing:.08em;">
+        Profil Görseli
+        <span class="text-muted text-lowercase">(opsiyonel)</span>
+      </label>
+      <input
+        type="text"
+        class="form-control border-0 shadow-sm"
+        [(ngModel)]="newTestimonial.imageUrl"
+        name="imageUrl"
+        placeholder="https://..."
+        style="background:#FAF7F2; border-radius:10px; padding:12px;"
+      >
+    </div>
 
-          <div class="mb-3">
-            <label class="form-label small text-muted">Puanınız</label>
-            <select class="form-select" [(ngModel)]="newTestimonial.rating" name="rating" required>
-              <option [ngValue]="5">⭐⭐⭐⭐⭐ (5 - Mükemmel)</option>
-              <option [ngValue]="4">⭐⭐⭐⭐ (4 - Çok İyi)</option>
-              <option [ngValue]="3">⭐⭐⭐ (3 - Ortalama)</option>
-              <option [ngValue]="2">⭐⭐ (2 - Kötü)</option>
-              <option [ngValue]="1">⭐ (1 - Çok Kötü)</option>
-            </select>
-          </div>
+    <div class="mb-3">
+      <label class="form-label small fw-semibold text-uppercase" style="color:#6b5b52; letter-spacing:.08em;">
+        Puanınız
+      </label>
+      <select
+        class="form-select border-0 shadow-sm"
+        [(ngModel)]="newTestimonial.rating"
+        name="rating"
+        required
+        style="background:#FAF7F2; border-radius:10px; padding:12px;"
+      >
+        <option [ngValue]="5">★★★★★ 5 - Mükemmel</option>
+        <option [ngValue]="4">★★★★☆ 4 - Çok İyi</option>
+        <option [ngValue]="3">★★★☆☆ 3 - İyi</option>
+        <option [ngValue]="2">★★☆☆☆ 2 - Orta</option>
+        <option [ngValue]="1">★☆☆☆☆ 1 - Kötü</option>
+      </select>
+    </div>
 
-          <div class="mb-3">
-            <label class="form-label small text-muted">Yorumunuz</label>
-            <textarea class="form-control" [(ngModel)]="newTestimonial.comment" name="comment" rows="3" placeholder="Ürünler hakkında deneyimlerinizi yazın..." required></textarea>
-          </div>
+    <div class="mb-4">
+      <label class="form-label small fw-semibold text-uppercase" style="color:#6b5b52; letter-spacing:.08em;">
+        Yorumunuz
+      </label>
+      <textarea
+        class="form-control border-0 shadow-sm"
+        [(ngModel)]="newTestimonial.comment"
+        name="comment"
+        rows="4"
+        placeholder="Lumière deneyiminizi paylaşın..."
+        required
+        style="background:#FAF7F2; border-radius:10px; padding:12px; resize:none;"
+      ></textarea>
+    </div>
 
-          <button type="submit" class="btn btn-dark w-100" [disabled]="!testimonialForm.form.valid">
-            Yorum Gönder
-          </button>
+    <button
+      type="submit"
+      class="btn w-100 rounded-pill py-2"
+      [disabled]="!testimonialForm.form.valid"
+      style="background:#8A653B; color:white;"
+    >
+      Yorumu Gönder
+    </button>
 
-        </form>
-      </div>
+  </form>
+</div>
 
     </div>
   </div>
 </div>
+
